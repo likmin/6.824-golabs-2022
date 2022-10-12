@@ -23,6 +23,27 @@ type ExampleReply struct {
 }
 
 // Add your RPC definitions here.
+type TaskType int32
+const (
+	TaskMap TaskType = 0
+	TaskReduce		  = 1
+	TaskFinish		  = 2
+)
+type MrArgs struct {
+	Kva      []KeyValue
+	Filename   string
+	Fileindex  int
+	Key        string
+	Output     string
+}
+
+type MrReply struct {
+	Filename  string
+	Fileindex int
+	Tasktype  TaskType
+	Key       string
+	Values    []string
+}
 
 
 // Cook up a unique-ish UNIX-domain socket name
